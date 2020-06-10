@@ -36,7 +36,7 @@ Superheroes=['superman',
              'ironman',
              'caption america',
              'black widow',
-             'hluk',
+             'hulk',
              'thor',
              'antman',
              'wolverin']
@@ -70,29 +70,21 @@ def word_chooser( name ):
     print('\t\t5.Random Word')
     print('\t\t6.Transports')
     choice=int(input('\n\tChoose From Above (1-6) : '))
-    if choice == 1:
-        rand=random.randint(1,len(Name))
-        word=Name[rand]
-    elif choice == 2 : 
-        rand=random.randint(1,len(Fruits))
-        word=Fruits[rand]
-    elif choice == 3 :
-        rand=random.randint(1,len(Vegetables))
-        word=Vegetables[rand]
-    elif choice == 4:
-        rand= random.randint(1,len(Superheroes))
-        word=Superheroes[rand]
-    elif choice == 5:
-        rand= random.randint(1,len(Random_words))
-        word=Random_words[rand]
-    elif choice == 6 : 
-        rand=random.randint(1,len(Transports))
-        word=Transports[rand]
-    else:
+    randoms={
+        1:random.choice(Name),
+        2:random.choice(Fruits),
+        3:random.choice(Vegetables),
+        4:random.choice(Superheroes),
+        5:random.choice(Random_words),
+        6:random.choice(Transports)
+    }
+    if 0 > choice > 6 :
         print("Please choose between 1 and 6 only...\n")
         time.sleep(2)
         return word_chooser(name)
-    return word
+    else:
+        word=randoms.get(choice)
+        return word
 
 def Hangman_logic(incomplete_word,word,name):
     wrong=0
@@ -169,7 +161,7 @@ def person(n):
         print("  0_| ")
         print(" /|\\  ")
         print(" / \\ ")
-        print("\nYOU MAKE HIM HANG ")
+        print("\nYOU MAKE HIM DIE ")
         time.sleep(2)
         exit()
     elif(n==11):
